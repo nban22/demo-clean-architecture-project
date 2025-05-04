@@ -30,11 +30,17 @@ const ActiveLoansList = () => {
     if (window.confirm('Xác nhận trả sách?')) {
       try {
         await returnBook(id);
+        // Thêm thông báo thành công
+        alert('Trả sách thành công!');
         // Cập nhật lại danh sách phiếu mượn
         fetchLoans();
       } catch (err) {
+        console.error('Error returning book:', err);
         setError('Lỗi khi trả sách. Vui lòng thử lại sau.');
-        console.error(err);
+        // Thêm thông báo chi tiết lỗi
+        if (err.response) {
+          console.error('Response error:', err.response.data);
+        }
       }
     }
   };

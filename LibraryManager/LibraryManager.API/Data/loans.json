@@ -1,26 +1,74 @@
 [
   {
+    "Id": 0,
+    "BookId": 1,
+    "Book": {
+      "Id": 1,
+      "ISBN": "978-604-77-5678-9",
+      "Title": "Lập trình Python cho người mới bắt đầu",
+      "Author": "Trần Thị B",
+      "PublicationYear": 2022,
+      "IsAvailable": true
+    },
+    "ReaderId": 2,
+    "Reader": {
+      "Id": 2,
+      "Name": "Nguyễn Xuân Thành",
+      "Email": "nxthanh22@clc.fitus.edu.vn",
+      "PhoneNumber": "0234535678",
+      "MembershipDate": "2025-05-04T03:14:53.052868Z",
+      "Loans": []
+    },
+    "LoanDate": "2025-05-04T03:14:34.2905729Z",
+    "DueDate": "2025-05-18T00:00:00",
+    "ReturnDate": null
+  },
+  {
     "Id": 1,
+    "BookId": 3,
+    "Book": {
+      "Id": 3,
+      "ISBN": "978-604-77-3456-7",
+      "Title": "Cấu trúc dữ liệu và giải thuật với C++",
+      "Author": "Phạm Quốc D",
+      "PublicationYear": 2021,
+      "IsAvailable": true
+    },
+    "ReaderId": 1,
+    "Reader": {
+      "Id": 1,
+      "Name": "Nguyễn Phước Sang",
+      "Email": "npsang22@clc.fitus.edu.vn",
+      "PhoneNumber": "0321312412",
+      "MembershipDate": "2025-05-04T03:14:53.0539185Z",
+      "Loans": []
+    },
+    "LoanDate": "2025-05-04T03:14:34.2905884Z",
+    "DueDate": "2025-05-12T00:00:00",
+    "ReturnDate": null
+  },
+  {
+    "Id": 2,
     "BookId": 0,
     "Book": {
       "Id": 0,
-      "ISBN": "GTNC001",
-      "Title": "Giáo Trình Nâng Cao",
-      "Author": "Nguyễn Bá An",
-      "PublicationYear": 2025,
+      "ISBN": "978-604-77-1234-5",
+      "Title": "Lập trình JavaScript từ cơ bản đến nâng cao",
+      "Author": "Nguyễn Văn A",
+      "PublicationYear": 2023,
       "IsAvailable": false
     },
     "ReaderId": 0,
     "Reader": {
       "Id": 0,
-      "Name": "Kenddy Nguyen",
+      "Name": "Nguyễn Bá An",
       "Email": "nban22@clc.fitus.edu.vn",
       "PhoneNumber": "0328653598",
-      "MembershipDate": "2025-05-04T01:26:54.9115894Z",
+      "MembershipDate": "2025-05-04T03:14:34.2903339Z",
       "Loans": []
     },
-    "LoanDate": "2025-05-04T01:26:54.9120661Z",
-    "DueDate": "2025-05-12T00:00:00",
+    "LoanDate": "2025-05-04T03:14:34.2903517Z",
+    "DueDate": "2025-05-19T00:00:00",
     "ReturnDate": null
   }
 ]

@@ -15,7 +15,7 @@ namespace LibraryManager.Core.Application.Services
 
         public async Task<IEnumerable<BookDto>> GetAllBooksAsync()
         {
-            var books = await _bookRepository.GetAllAsync();
+            var books = await _bookRepository.GetAllAsync();            
             return books.Select(book => new BookDto
             {
                 Id = book.Id,

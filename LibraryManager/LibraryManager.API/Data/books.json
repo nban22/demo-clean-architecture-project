@@ -1,10 +1,34 @@
 [
   {
     "Id": 0,
-    "ISBN": "GTNC001",
-    "Title": "Giáo Trình Nâng Cao",
-    "Author": "Nguyễn Bá An",
-    "PublicationYear": 2025,
+    "ISBN": "978-604-77-1234-5",
+    "Title": "Lập trình JavaScript từ cơ bản đến nâng cao",
+    "Author": "Nguyễn Văn A",
+    "PublicationYear": 2023,
     "IsAvailable": false
+  },
+  {
+    "Id": 1,
+    "ISBN": "978-604-77-5678-9",
+    "Title": "Lập trình Python cho người mới bắt đầu",
+    "Author": "Trần Thị B",
+    "PublicationYear": 2022,
+    "IsAvailable": true
+  },
+  {
+    "Id": 2,
+    "ISBN": "978-604-77-9012-3",
+    "Title": "Xây dựng ứng dụng web với ReactJS",
+    "Author": "Lê Minh C",
+    "PublicationYear": 2024,
+    "IsAvailable": true
+  },
+  {
+    "Id": 3,
+    "ISBN": "978-604-77-3456-7",
+    "Title": "Cấu trúc dữ liệu và giải thuật với C++",
+    "Author": "Phạm Quốc D",
+    "PublicationYear": 2021,
+    "IsAvailable": true
   }
 ]

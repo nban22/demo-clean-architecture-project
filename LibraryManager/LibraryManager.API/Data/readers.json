@@ -1,26 +1,26 @@
 [
   {
     "Id": 0,
-    "Name": "Kenddy Nguyen",
+    "Name": "Nguyễn Bá An",
     "Email": "nban22@clc.fitus.edu.vn",
     "PhoneNumber": "0328653598",
-    "MembershipDate": "2025-05-04T01:26:16.5471789Z",
-    "Loans": []
-  },
-  {
-    "Id": 0,
-    "Name": "Nguyễn Xuân Thành",
-    "Email": "nxthanh22@clc.fitus.edu.vn",
-    "PhoneNumber": "0485838574",
-    "MembershipDate": "2025-05-04T01:26:16.5471881Z",
+    "MembershipDate": "2025-05-04T03:14:53.0539126Z",
     "Loans": []
   },
   {
     "Id": 1,
     "Name": "Nguyễn Phước Sang",
     "Email": "npsang22@clc.fitus.edu.vn",
-    "PhoneNumber": "0234214435",
-    "MembershipDate": "2025-05-04T01:26:16.5459225Z",
+    "PhoneNumber": "0321312412",
+    "MembershipDate": "2025-05-04T03:14:53.0539185Z",
+    "Loans": []
+  },
+  {
+    "Id": 2,
+    "Name": "Nguyễn Xuân Thành",
+    "Email": "nxthanh22@clc.fitus.edu.vn",
+    "PhoneNumber": "0234535678",
+    "MembershipDate": "2025-05-04T03:14:53.052868Z",
     "Loans": []
   }
 ]

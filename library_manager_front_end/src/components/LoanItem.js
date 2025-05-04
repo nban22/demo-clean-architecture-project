@@ -1,8 +1,14 @@
-// src/components/LoanItem.js
+// src/components/LoanItem.js - Sửa lại
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 const LoanItem = ({ loan, onReturn }) => {
+  const handleReturn = () => {
+    if (!loan.returnDate && typeof onReturn === 'function') {
+      onReturn(loan.id);
+    }
+  };
+
   return (
     <tr>
       <td>{loan.bookTitle}</td>
@@ -22,7 +28,7 @@ const LoanItem = ({ loan, onReturn }) => {
         </Link>
         {!loan.returnDate && (
           <button 
-            onClick={() => onReturn(loan.id)} 
+            onClick={handleReturn}
             className="btn btn-success btn-sm"
           >
             Trả sách

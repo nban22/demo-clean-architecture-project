@@ -13,32 +13,20 @@ namespace LibraryManager.Infrastructure.Data.Repositories
     public class FileBookRepository : IBookRepository
     {
         private readonly string _filePath;
-        private static int _lastId = 0;
 
         public FileBookRepository(string filePath)
         {
             _filePath = filePath;
 
-            // Tạo thư mục nếu chưa tồn tại
             var directory = Path.GetDirectoryName(filePath);
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }
 
-            // Tạo file nếu chưa tồn tại
             if (!File.Exists(filePath))
             {
                 File.WriteAllText(filePath, "[]");
-            }
-            else
-            {
-                // Lấy ID lớn nhất hiện tại
-                var books = ReadBooks().Result;
-                if (books.Any())
-                {
-                    _lastId = books.Max(b => b.Id);
-                }
             }
         }
 
@@ -53,6 +41,7 @@ namespace LibraryManager.Infrastructure.Data.Repositories
             var json = JsonConvert.SerializeObject(books, Newtonsoft.Json.Formatting.Indented);
             await File.WriteAllTextAsync(_filePath, json);
         }
+
 
         public async Task<Book> GetByIdAsync(int id)
         {
@@ -75,15 +64,25 @@ namespace LibraryManager.Infrastructure.Data.Repositories
         {
             var books = await ReadBooks();
 
-            // Đặt ID mới
+            // Tìm ID lớn nhất hiện tại
+            int maxId = 0;
+            if (books.Any())
+            {
+                maxId = books.Max(b => b.Id);
+            }
+
+            // Gán ID mới = maxId + 1
             var type = typeof(Book);
             var idProperty = type.GetProperty("Id");
-            _lastId++;
-            idProperty.SetValue(book, _lastId);
+            idProperty.SetValue(book, maxId + 1);
+
+            Console.WriteLine($"Adding book with ID: {book.Id}, Title: {book.Title}");
 
             books.Add(book);
             await WriteBooks(books);
         }
+
+
 
         public async Task UpdateAsync(Book book)
         {

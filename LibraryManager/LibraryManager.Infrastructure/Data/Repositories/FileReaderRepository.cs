@@ -12,7 +12,6 @@ namespace LibraryManager.Infrastructure.Data.Repositories
     public class FileReaderRepository : IReaderRepository
     {
         private readonly string _filePath;
-        private static int _lastId = 0;
 
         public FileReaderRepository(string filePath)
         {
@@ -28,14 +27,6 @@ namespace LibraryManager.Infrastructure.Data.Repositories
             {
                 File.WriteAllText(filePath, "[]");
             }
-            else
-            {
-                var readers = ReadReaders().Result;
-                if (readers.Any())
-                {
-                    _lastId = readers.Max(r => r.Id);
-                }
-            }
         }
 
         private async Task<List<Reader>> ReadReaders()
@@ -49,6 +40,7 @@ namespace LibraryManager.Infrastructure.Data.Repositories
             var json = JsonConvert.SerializeObject(readers, Formatting.Indented);
             await File.WriteAllTextAsync(_filePath, json);
         }
+
 
         public async Task<Reader> GetByIdAsync(int id)
         {
@@ -71,14 +63,25 @@ namespace LibraryManager.Infrastructure.Data.Repositories
         {
             var readers = await ReadReaders();
 
+            // Tìm ID lớn nhất hiện tại
+            int maxId = 0;
+            if (readers.Any())
+            {
+                maxId = readers.Max(r => r.Id);
+            }
+
+            // Gán ID mới = maxId + 1
             var type = typeof(Reader);
             var idProperty = type.GetProperty("Id");
-            _lastId++;
-            idProperty.SetValue(reader, _lastId);
+            idProperty.SetValue(reader, maxId + 1);
+
+            Console.WriteLine($"Adding reader with ID: {reader.Id}, Name: {reader.Name}");
 
             readers.Add(reader);
             await WriteReaders(readers);
         }
+
+
 
         public async Task UpdateAsync(Reader reader)
         {

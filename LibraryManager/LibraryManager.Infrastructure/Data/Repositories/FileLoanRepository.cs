@@ -15,7 +15,6 @@ namespace LibraryManager.Infrastructure.Data.Repositories
         private readonly string _filePath;
         private readonly IBookRepository _bookRepository;
         private readonly IReaderRepository _readerRepository;
-        private static int _lastId = 0;
 
         public FileLoanRepository(string filePath, IBookRepository bookRepository, IReaderRepository readerRepository)
         {
@@ -33,15 +32,8 @@ namespace LibraryManager.Infrastructure.Data.Repositories
             {
                 File.WriteAllText(filePath, "[]");
             }
-            else
-            {
-                var loans = ReadLoansRaw().Result;
-                if (loans.Any())
-                {
-                    _lastId = loans.Max(l => l.Id);
-                }
-            }
         }
+
 
         private async Task<List<Loan>> ReadLoansRaw()
         {
@@ -144,19 +136,29 @@ namespace LibraryManager.Infrastructure.Data.Repositories
         {
             var loans = await ReadLoansRaw();
 
+            // Tìm ID lớn nhất hiện tại
+            int maxId = 0;
+            if (loans.Any())
+            {
+                maxId = loans.Max(l => l.Id);
+            }
+
+            // Gán ID mới = maxId + 1
             var type = typeof(Loan);
             var idProperty = type.GetProperty("Id");
-            _lastId++;
-            idProperty.SetValue(loan, _lastId);
+            idProperty.SetValue(loan, maxId + 1);
+
+            Console.WriteLine($"Adding loan with ID: {loan.Id}, BookId: {loan.BookId}, ReaderId: {loan.ReaderId}");
 
             loans.Add(loan);
             await WriteLoans(loans);
 
-            // Update book availability
+            // Cập nhật trạng thái sách
             var book = await _bookRepository.GetByIdAsync(loan.BookId);
             book.MarkAsUnavailable();
             await _bookRepository.UpdateAsync(book);
         }
+
 
         public async Task UpdateAsync(Loan loan)
         {
@@ -165,15 +167,23 @@ namespace LibraryManager.Infrastructure.Data.Repositories
 
             if (index != -1)
             {
+                // Lưu lại thông tin cũ để kiểm tra xem loan có đang được trả hay không
+                var oldLoan = loans[index];
+                var isReturning = !oldLoan.ReturnDate.HasValue && loan.ReturnDate.HasValue;
+
+                // Cập nhật loan trong danh sách
                 loans[index] = loan;
                 await WriteLoans(loans);
 
-                // If returning a book, update its availability
-                if (loan.ReturnDate.HasValue)
+                // Nếu đang trả sách, cập nhật trạng thái sách thành có sẵn
+                if (isReturning)
                 {
                     var book = await _bookRepository.GetByIdAsync(loan.BookId);
-                    book.MarkAsAvailable();
-                    await _bookRepository.UpdateAsync(book);
+                    if (book != null)
+                    {
+                        book.MarkAsAvailable();
+                        await _bookRepository.UpdateAsync(book);
+                    }
                 }
             }
         }

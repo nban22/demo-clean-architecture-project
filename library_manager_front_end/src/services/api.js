@@ -1,18 +1,20 @@
 // src/services/api.js
-import axios from 'axios';
+import axios from "axios";
 
 // Cấu hình base URL cho API
 const API = axios.create({
-  baseURL: 'https://localhost:7233/api',
+  baseURL: "http://localhost:5002/api",
 });
 
 // Các API calls cho Book
 export const getBooks = async () => {
   try {
-    const response = await API.get('/books');
+    const response = await API.get("/books");
+    console.log("Books data:", response.data); // Log the response data
+    
     return response.data;
   } catch (error) {
-    console.error('Error fetching books:', error);
+    console.error("Error fetching books:", error);
     throw error;
   }
 };
@@ -29,10 +31,10 @@ export const getBookById = async (id) => {
 
 export const createBook = async (bookData) => {
   try {
-    const response = await API.post('/books', bookData);
+    const response = await API.post("/books", bookData);
     return response.data;
   } catch (error) {
-    console.error('Error creating book:', error);
+    console.error("Error creating book:", error);
     throw error;
   }
 };
@@ -57,107 +59,108 @@ export const deleteBook = async (id) => {
   }
 };
 
-
 // src/services/api.js (bổ sung thêm)
 
 // Reader API Calls
 export const getReaders = async () => {
-    try {
-      const response = await API.get('/readers');
-      return response.data;
-    } catch (error) {
-      console.error('Error fetching readers:', error);
-      throw error;
-    }
-  };
-  
-  export const getReaderById = async (id) => {
-    try {
-      const response = await API.get(`/readers/${id}`);
-      return response.data;
-    } catch (error) {
-      console.error(`Error fetching reader with id ${id}:`, error);
-      throw error;
-    }
-  };
-  
-  export const createReader = async (readerData) => {
-    try {
-      const response = await API.post('/readers', readerData);
-      return response.data;
-    } catch (error) {
-      console.error('Error creating reader:', error);
-      throw error;
-    }
-  };
-  
-  export const updateReader = async (id, readerData) => {
-    try {
-      const response = await API.put(`/readers/${id}`, readerData);
-      return response.data;
-    } catch (error) {
-      console.error(`Error updating reader with id ${id}:`, error);
-      throw error;
-    }
-  };
-  
-  export const deleteReader = async (id) => {
-    try {
-      const response = await API.delete(`/readers/${id}`);
-      return response.data;
-    } catch (error) {
-      console.error(`Error deleting reader with id ${id}:`, error);
-      throw error;
-    }
-  };
-  
-  // Loan API Calls
-  export const getLoans = async () => {
-    try {
-      const response = await API.get('/loans');
-      return response.data;
-    } catch (error) {
-      console.error('Error fetching loans:', error);
-      throw error;
-    }
-  };
-  
-  export const getActiveLoans = async () => {
-    try {
-      const response = await API.get('/loans/active');
-      return response.data;
-    } catch (error) {
-      console.error('Error fetching active loans:', error);
-      throw error;
-    }
-  };
-  
-  export const getLoanById = async (id) => {
-    try {
-      const response = await API.get(`/loans/${id}`);
-      return response.data;
-    } catch (error) {
-      console.error(`Error fetching loan with id ${id}:`, error);
-      throw error;
-    }
-  };
-  
-  export const createLoan = async (loanData) => {
-    try {
-      const response = await API.post('/loans', loanData);
-      return response.data;
-    } catch (error) {
-      console.error('Error creating loan:', error);
-      throw error;
-    }
-  };
-  
-  export const returnBook = async (id) => {
-    try {
-      const response = await API.post(`/loans/${id}/return`);
-      return response.data;
-    } catch (error) {
-      console.error(`Error returning book for loan id ${id}:`, error);
-      throw error;
-    }
-  };
+  try {
+    const response = await API.get("/readers");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching readers:", error);
+    throw error;
+  }
+};
+
+export const getReaderById = async (id) => {
+  try {
+    const response = await API.get(`/readers/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching reader with id ${id}:`, error);
+    throw error;
+  }
+};
+
+export const createReader = async (readerData) => {
+  try {
+    const response = await API.post("/readers", readerData);
+    return response.data;
+  } catch (error) {
+    console.error("Error creating reader:", error);
+    throw error;
+  }
+};
+
+export const updateReader = async (id, readerData) => {
+  try {
+    const response = await API.put(`/readers/${id}`, readerData);
+    return response.data;
+  } catch (error) {
+    console.error(`Error updating reader with id ${id}:`, error);
+    throw error;
+  }
+};
+
+export const deleteReader = async (id) => {
+  try {
+    const response = await API.delete(`/readers/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error deleting reader with id ${id}:`, error);
+    throw error;
+  }
+};
+
+// Loan API Calls
+export const getLoans = async () => {
+  try {
+    const response = await API.get("/loans");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching loans:", error);
+    throw error;
+  }
+};
+
+export const getActiveLoans = async () => {
+  try {
+    const response = await API.get("/loans/active");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching active loans:", error);
+    throw error;
+  }
+};
+
+export const getLoanById = async (id) => {
+  try {
+    const response = await API.get(`/loans/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching loan with id ${id}:`, error);
+    throw error;
+  }
+};
+
+export const createLoan = async (loanData) => {
+  try {
+    const response = await API.post("/loans", loanData);
+    return response.data;
+  } catch (error) {
+    console.error("Error creating loan:", error);
+    throw error;
+  }
+};
+
+export const returnBook = async (id) => {
+  try {
+    console.log(`Calling return book API for loan ID: ${id}`);
+    const response = await API.post(`/loans/${id}/return`);
+    console.log("Return book success:", response);
+    return response.data;
+  } catch (error) {
+    console.error(`Error returning book for loan id ${id}:`, error);
+    throw error;
+  }
+};

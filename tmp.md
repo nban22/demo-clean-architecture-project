@@ -156,7 +156,7 @@ Logic nghiệp vụ không phụ thuộc vào framework. Nếu muốn chuyển t
 ## 5. Giao diện người dùng (Frontend)
 
 ### 5.1. Trang chủ
-![Trang chủ](image-9.png)
+![Trang chủ](/api/placeholder/800/450)
 
 Trang chủ hiển thị các chức năng chính của hệ thống:
 - Quản lý sách
@@ -166,7 +166,7 @@ Trang chủ hiển thị các chức năng chính của hệ thống:
 ### 5.2. Quản lý sách
 
 #### 5.2.1. Danh sách sách
-![Danh sách sách](image-6.png)
+![Danh sách sách](/api/placeholder/800/450)
 
 Hiển thị tất cả sách trong thư viện với các thông tin chính:
 - ISBN
@@ -176,7 +176,7 @@ Hiển thị tất cả sách trong thư viện với các thông tin chính:
 - Trạng thái (có sẵn hay đang được mượn)
 
 #### 5.2.2. Thêm sách mới
-![Thêm sách mới](image-7.png)
+![Thêm sách mới](/api/placeholder/800/450)
 
 Form nhập thông tin sách mới:
 - ISBN
@@ -186,14 +186,14 @@ Form nhập thông tin sách mới:
 - Trạng thái
 
 #### 5.2.3. Chi tiết sách
-![Chi tiết sách](image-8.png)
+![Chi tiết sách](/api/placeholder/800/450)
 
 Hiển thị thông tin chi tiết của một cuốn sách và các thao tác có thể thực hiện.
 
 ### 5.3. Quản lý độc giả
 
 #### 5.3.1. Danh sách độc giả
-![Danh sách độc giả](image-2.png)
+![Danh sách độc giả](/api/placeholder/800/450)
 
 Hiển thị tất cả độc giả trong hệ thống với các thông tin chính:
 - Họ tên
@@ -202,7 +202,7 @@ Hiển thị tất cả độc giả trong hệ thống với các thông tin ch
 - Ngày đăng ký
 
 #### 5.3.2. Thêm độc giả mới
-![Thêm độc giả mới](image-3.png)
+![Thêm độc giả mới](/api/placeholder/800/450)
 
 Form nhập thông tin độc giả mới:
 - Họ tên
@@ -210,14 +210,14 @@ Form nhập thông tin độc giả mới:
 - Số điện thoại
 
 #### 5.3.3. Chi tiết độc giả
-![Chi tiết độc giả](image-4.png)
+![Chi tiết độc giả](/api/placeholder/800/450)
 
 Hiển thị thông tin chi tiết của độc giả và các thao tác có thể thực hiện.
 
 ### 5.4. Quản lý mượn/trả sách
 
 #### 5.4.1. Danh sách phiếu mượn
-![Danh sách phiếu mượn](image.png)
+![Danh sách phiếu mượn](/api/placeholder/800/450)
 
 Hiển thị tất cả phiếu mượn với các thông tin:
 - Sách
@@ -226,28 +226,33 @@ Hiển thị tất cả phiếu mượn với các thông tin:
 - Ngày hạn trả
 - Trạng thái
 
-#### 5.4.2. Chi tiết phiếu mượn
-![Chi tiết phiếu mượn](image-1.png)
+#### 5.4.2. Phiếu mượn đang hoạt động
+![Phiếu mượn đang hoạt động](/api/placeholder/800/450)
+
+Hiển thị các phiếu mượn chưa trả sách với khả năng đánh dấu trả sách.
+
+#### 5.4.3. Tạo phiếu mượn mới
+![Tạo phiếu mượn mới](/api/placeholder/800/450)
+
+Form tạo phiếu mượn mới:
+- Chọn sách (chỉ hiển thị sách có sẵn)
+- Chọn độc giả
+- Chọn ngày hạn trả
+
+#### 5.4.4. Chi tiết phiếu mượn
+![Chi tiết phiếu mượn](/api/placeholder/800/450)
 
 Hiển thị thông tin chi tiết của phiếu mượn và nút trả sách nếu phiếu mượn đang hoạt động.
 
-#### 5.4.3. Tạo phiếu mượn
-![Tạo phiếu mượn](image-5.png)
-
-Form nhập thông tin phiếu mượn:
-- Sách
-- Độc giả
-- Ngày hạn trả
-
 ## 6. Hướng dẫn sử dụng dự án
 
-### 5.1. Yêu cầu hệ thống
+### 6.1. Yêu cầu hệ thống
 
 - **.NET SDK**: Phiên bản 7.0 hoặc mới hơn
 - **Node.js**: Phiên bản 16.0 hoặc mới hơn
 - **npm**: Phiên bản 8.0 hoặc mới hơn
 
-### 5.2. Thiết lập Backend (ASP.NET Core)
+### 6.2. Thiết lập Backend (ASP.NET Core)
 
 1. **Mở Terminal/Command Prompt và di chuyển đến thư mục backend**:
    ```bash
@@ -269,13 +274,13 @@ Form nhập thông tin phiếu mượn:
    dotnet run
    ```
 
-Backend API sẽ được chạy tại `http://localhost:5002` (hoặc một port khác tùy cấu hình).
+Backend API sẽ được chạy tại `https://localhost:7001` (hoặc một port khác tùy cấu hình).
 
-### 5.3. Thiết lập Frontend (React)
+### 6.3. Thiết lập Frontend (React)
 
 1. **Mở Terminal/Command Prompt khác và di chuyển đến thư mục frontend**:
    ```bash
-   cd library_manager_front_end
+   cd library-manager-react
    ```
 
 2. **Cài đặt các gói phụ thuộc**:
@@ -290,14 +295,14 @@ Backend API sẽ được chạy tại `http://localhost:5002` (hoặc một por
 
 Frontend sẽ được chạy tại `http://localhost:3000`.
 
-### 5.4. Lưu ý quan trọng
+### 6.4. Lưu ý quan trọng
 
 - Đảm bảo backend đang chạy trước khi khởi động frontend
 - Kiểm tra cấu hình CORS trong backend để cho phép kết nối từ frontend
 - Trong file `src/services/api.js`, đảm bảo baseURL đúng với địa chỉ backend
 - Dữ liệu sẽ được lưu trong thư mục `Data` bên trong thư mục backend, dưới dạng các file JSON
 
-### 5.5. Các chức năng chính
+### 6.5. Các chức năng chính
 
 1. **Quản lý sách**:
    - Xem danh sách sách

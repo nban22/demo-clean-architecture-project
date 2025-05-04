@@ -16,6 +16,8 @@ const CreateLoan = () => {
         bookId: parseInt(loanData.bookId),
         readerId: parseInt(loanData.readerId)
       };
+
+      console.log(processedData);
       
       await createLoan(processedData);
       navigate('/loans');
