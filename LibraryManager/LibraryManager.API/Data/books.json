@@ -1,0 +1,10 @@
+[
+  {
+    "Id": 0,
+    "ISBN": "GTNC001",
+    "Title": "Giáo Trình Nâng Cao",
+    "Author": "Nguyễn Bá An",
+    "PublicationYear": 2025,
+    "IsAvailable": false
+  }
+]
